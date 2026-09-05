@@ -49,7 +49,7 @@ ENV NODE_ENV=production
 # Next.js collects completely anonymous telemetry data about general usage.
 # Learn more here: https://nextjs.org/telemetry
 # Uncomment the following line in case you want to disable telemetry during the build.
-# ENV NEXT_TELEMETRY_DISABLED=1
+ENV NEXT_TELEMETRY_DISABLED=1
 
 # Build Next.js application
 # If you want to speed up Docker rebuilds, you can cache the build artifacts
@@ -78,7 +78,7 @@ WORKDIR /app
 
 # Set production environment variables
 ENV NODE_ENV=production
-ENV PORT=3000
+ENV PORT=4001
 ENV HOSTNAME="0.0.0.0"
 
 # Next.js collects completely anonymous telemetry data about general usage.
@@ -105,8 +105,8 @@ COPY --from=builder --chown=node:node /app/.next/static ./.next/static
 # Switch to non-root user for security best practices
 USER node
 
-# Expose port 3000 to allow HTTP traffic
-EXPOSE 3000
+# Expose port 4001 to allow HTTP traffic
+EXPOSE 4001
 
 # Start Next.js standalone server
 CMD ["node", "server.js"]
