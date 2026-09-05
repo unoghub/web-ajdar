@@ -1,18 +1,20 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Inter } from "next/font/google";
+import { Inter, Caveat, Dosis } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
+import { Navbar } from "@/components/navbar";
 
 const inter = Inter({subsets:['latin'],variable:'--font-sans'});
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const caveat = Caveat({
+  variable: "--font-caveat",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const dosis = Dosis({
+  variable: "--font-dosis",
   subsets: ["latin"],
+  weight: "variable",
 });
 
 export const metadata: Metadata = {
@@ -24,9 +26,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={cn("h-full", "antialiased", geistSans.variable, geistMono.variable, "font-sans", inter.variable)}
+      className={cn("h-full", "antialiased", caveat.variable, dosis.variable, "font-dosis", inter.variable)}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <Navbar />
+      <body className="min-h-full flex flex-col">
+        {children}
+      </body>
     </html>
   );
 }
