@@ -5,6 +5,10 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
+  --color-text: var(--text);
+  --color-title: var(--title);
+  --color-text-secondary: var(--text-secondary);
+  --color-blurple: var(--blurple);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-sans);
@@ -50,6 +54,10 @@
 }
 
 :root {
+  --text: #727285;
+  --title: #1C1B2E;
+  --text-secondary: #242424;
+  --blurple: oklch(0.5774 0.2091 273.85);
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
@@ -65,7 +73,7 @@
   --accent: oklch(0.97 0 0);
   --accent-foreground: oklch(0.205 0 0);
   --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
+  --border: #D9D9FF;
   --input: oklch(0.922 0 0);
   --ring: oklch(0.708 0 0);
   --chart-1: oklch(0.87 0 0);
