@@ -28,8 +28,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={cn("h-full", "antialiased", caveat.variable, dosis.variable, "font-dosis", inter.variable)}
     >
-      <Navbar />
       <body className="min-h-full flex flex-col">
+        <Navbar />
         {children}
       </body>
     </html>
