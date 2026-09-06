@@ -1,10 +1,10 @@
+import { useTranslations } from "next-intl";
+
 const GRID_ITEMS = [
     {
         type: "text",
         number: "01",
-        title: "Biz Kimiz?",
-        description:
-            "2017 yılında kurulan ve Türkiye'nin dört bir yanından mühendisleri, tasarımcıları ve oyunseverleri bir araya getiren, bağımsız ve kâr amacı gütmeyen bir oyun geliştirici topluluğuyuz.",
+        messageKey: "identity",
     },
     {
         type: "image",
@@ -13,9 +13,7 @@ const GRID_ITEMS = [
     {
         type: "text",
         number: "03",
-        title: "Misyon",
-        description:
-            "Game Jam'ler, atölyeler, buluşmalar ve yayınlarla yaratıcı iş birliklerini artırmak. Bilgiyi erişilebilir kılarak sektördeki dönüşüme katkıda bulunmak.",
+        messageKey: "mission",
     },
     {
         type: "image",
@@ -24,21 +22,23 @@ const GRID_ITEMS = [
     {
         type: "text",
         number: "02",
-        title: "Vizyon",
-        description:
-            "Türkiye'de oyun geliştirme kültürünü güçlendirmek, bilgi paylaşımını yaygınlaştırmak ve bağımsız oyun geliştiriciler için sürdürülebilir bir ekosistem inşa etmek.",
+        messageKey: "vision",
     },
     {
         type: "image",
         src: "/images/third.png",
     },
-];
+] as const;
 
 export function AboutSection() {
+    const t = useTranslations("About");
+    
     return (
         <div className="mx-auto max-w-430 px-4 pt-16 pb-16 sm:px-8 lg:min-h-244.25">
             <div className="text-9xl font-bold flex items-center justify-center mt-8">
-                <p>ÜNOG <span className="font-caveat">Kimdir?</span></p>
+                <p>{t.rich("heading", {
+                    accent: (chunks) => <span className="font-caveat">{chunks}</span>,
+                })}</p>
             </div>
 
             <div className="grid grid-cols-1 gap-8 md:grid-cols-3 mt-20">
@@ -68,11 +68,11 @@ export function AboutSection() {
                             </span>
 
                             <h3 className="mt-1 font-caveat font-bold text-3xl">
-                                {item.title}
+                                {t(`${item.messageKey}.title`)}
                             </h3>
 
                             <p className="mt-3 leading-6 text-xl">
-                                {item.description}
+                                {t(`${item.messageKey}.description`)}
                             </p>
                         </div>
                     );
