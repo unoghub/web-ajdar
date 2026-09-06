@@ -1,30 +1,18 @@
+import { useTranslations } from "next-intl";
+import { LocaleSwitcher } from "./locale-switcher";
 import Image from "next/image";
 import Link from "next/link";
 
 const LINKS = [
-    {
-        label: "Topluluk",
-        href: "#"
-    },
-    {
-        label: "Etkinlikler",
-        href: "#",
-    },
-    {
-        label: "Projeler",
-        href: "#",
-    },
-    {
-        label: "Blog",
-        href: "#",
-    },
-    {
-        label: "İletişim",
-        href: "#",
-    },
-]
+    { label: "community", href: "#" },
+    { label: "events", href: "#" },
+    { label: "projects", href: "#" },
+    { label: "blog", href: "#" },
+    { label: "contact", href: "#" },
+] as const;
 
 export function Navbar() {
+    const t = useTranslations("Navbar");
     return (
         <nav className="border-b border-border shadow">
             <div className="grid grid-cols-7 gap-20 p-5 mx-72">
@@ -41,13 +29,11 @@ export function Navbar() {
                         href={link.href}
                         className="font-medium text-xl text-text hover:underline decoration-border self-center"
                     >
-                        {link.label}
+                        {t(link.label)}
                     </Link>
                 ))}
 
-                <select className="border p-1 px-2 rounded-md">
-                    <option>TR</option>
-                </select>
+                <LocaleSwitcher />
             </div>
         </nav>
     )
