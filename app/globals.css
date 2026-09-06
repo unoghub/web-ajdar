@@ -9,6 +9,7 @@
   --color-title: var(--title);
   --color-text-secondary: var(--text-secondary);
   --color-blurple: var(--blurple);
+  --color-terminal-black: var(--terminal-black);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-sans);
@@ -58,6 +59,7 @@
   --title: #1C1B2E;
   --text-secondary: #242424;
   --blurple: oklch(0.5774 0.2091 273.85);
+  --terminal-black: oklch(0.2331 0.0363 285.62);
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
