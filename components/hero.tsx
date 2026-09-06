@@ -63,7 +63,7 @@ export function HeroSection() {
                     <div className="flex min-w-0 flex-col items-center gap-8 lg:col-start-2 lg:gap-12 lg:pt-8">
                         <p className="max-w-219 text-center text-text-secondary font-medium text-lg sm:text-2xl">
                             Sohbet et, ekip kur, etkinliklere katıl ve birlikte oyun geliştir.
-                            İster yeni başlıyor ol ister deneyimli ol, ÜNOG'da seni destekleyen bir topluluk bulacaksın.
+                            İster yeni başlıyor ol ister deneyimli ol, <span className="font-bold">ÜNOG</span>'da seni destekleyen bir topluluk bulacaksın.
                         </p>
                         <div className="flex flex-col gap-8 items-center justify-center">
                             <StyledButton className="h-18 w-full" icon={<Image src="/assets/discord.svg" width={24} height={24} alt="discordlogo" />}>
