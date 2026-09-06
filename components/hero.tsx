@@ -78,6 +78,7 @@ export function HeroSection() {
                         </div>
                     </div>
                     <Image
+                        priority
                         src="/assets/penguen.svg"
                         width={423}
                         height={514}

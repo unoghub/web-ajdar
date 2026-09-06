@@ -36,7 +36,7 @@ export function StyledButton({ icon, children, className, colors, style, ...prop
                 "transition-[translate,box-shadow,background-color] duration-150 ease-out",
                 "enabled:hover:translate-y-1 enabled:hover:shadow-[0_2px_0_var(--button-shadow),inset_0_2px_4px_color-mix(in_srgb,var(--button-inset-shadow)_15%,transparent)]",
                 "enabled:active:translate-y-1.5 enabled:active:not-aria-[haspopup]:translate-y-1.5 enabled:active:shadow-[0_0_0_var(--button-shadow),inset_0_3px_6px_color-mix(in_srgb,var(--button-inset-shadow)_20%,transparent)]",
-                "motion-reduce:transition-none",
+                "select-none motion-reduce:transition-none",
                 className,
             )}
         >
