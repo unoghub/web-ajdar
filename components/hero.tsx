@@ -50,27 +50,34 @@ export function HeroSection() {
     const t = useTranslations("Hero");
     
     return (
-        <div className="mx-auto max-w-480 px-4 pt-16 pb-16 sm:px-8 lg:min-h-244.25">
-            <div className="flex flex-col gap-8 sm:gap-12">
-                <p className="text-center font-caveat text-title font-bold text-[clamp(2.5rem,6.67vw,8rem)] leading-tight">
-                    {t("community")}
-                </p>
-                <p className="text-center text-title font-extrabold text-[clamp(2.5rem,6.67vw,8rem)] leading-tight">
-                    {t("welcome")}
-                </p>
+        <section className="relative isolate min-h-[calc(100svh-5rem)] overflow-hidden">
+            <Image
+                priority
+                src="/assets/bigfart.png"
+                width={3508}
+                height={3508}
+                alt=""
+                sizes="(min-width: 1024px) max(25rem, 48vw), 0px"
+                className="pointer-events-none absolute right-[-8vw] bottom-[-14vw] z-0 hidden w-[clamp(38rem,54vw,68rem)] select-none lg:block"
+            />
 
-                <div className="grid items-start gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,3fr)_minmax(0,1fr)] lg:gap-6">
-                    <div className="h-auto w-full max-w-60 justify-self-center sm:max-w-72 lg:col-start-1 lg:-translate-y-1 lg:max-w-106 lg:justify-self-end">
-                        <StatsTerminal />
-                    </div>
-                    <div className="flex min-w-0 flex-col items-center gap-8 lg:col-start-2 lg:gap-12 lg:pt-8">
-                        <p className="max-w-219 text-center text-text-secondary font-medium text-lg sm:text-2xl">
+            <div className="relative z-10 mx-auto max-w-480 px-4 pt-16 pb-16 sm:px-8 lg:px-16">
+                <div className="flex flex-col items-center gap-8 sm:gap-12 lg:max-w-460 lg:items-start">
+                    <p className="text-center font-caveat text-title font-bold text-[clamp(2.5rem,6.67vw,8rem)] leading-tight lg:text-left">
+                        {t("community")}
+                    </p>
+                    <p className="text-center text-title font-extrabold text-[clamp(2.5rem,6.67vw,8rem)] leading-tight lg:text-left">
+                        {t("welcome")}
+                    </p>
+
+                    <div className="flex w-full flex-col items-center gap-8 lg:items-start">
+                        <p className="max-w-219 text-center text-text-secondary font-medium text-lg sm:text-2xl lg:max-w-xl lg:text-left">
                             {t.rich("description", {
                                 strong: (chunks) => <span className="font-bold">{chunks}</span>,
                             })}
                         </p>
-                        <div className="flex flex-col gap-8 items-center justify-center">
-                            <StyledButton className="h-18 w-full" icon={<Image src="/assets/discord.svg" width={24} height={24} alt="discordlogo" />}>
+                        <div className="flex flex-col items-center justify-center gap-8 lg:items-start">
+                            <StyledButton className="h-18 w-full lg:w-60" icon={<Image src="/assets/discord.svg" width={24} height={24} alt="discordlogo" />}>
                                 {t("joinDiscord")}
                             </StyledButton>
 
@@ -81,16 +88,8 @@ export function HeroSection() {
                             </div>
                         </div>
                     </div>
-                    <Image
-                        priority
-                        src="/assets/penguen.svg"
-                        width={423}
-                        height={514}
-                        alt={t("mascotAlt")}
-                        className="h-auto w-full max-w-60 justify-self-center sm:max-w-72 lg:col-start-3 lg:-translate-y-35 lg:max-w-106 lg:justify-self-end"
-                    />
                 </div>
             </div>
-        </div>
+        </section>
     )
 }
