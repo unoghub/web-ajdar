@@ -4,6 +4,7 @@ import { useTransition } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { setLocale } from "@/app/actions";
 import { isLocale, locales } from "@/i18n/config";
+import { Globe2 } from "lucide-react";
 
 export function LocaleSwitcher() {
   const locale = useLocale();
@@ -11,11 +12,12 @@ export function LocaleSwitcher() {
   const [isPending, startTransition] = useTransition();
 
   return (
-    <div className="self-center">
+    <div className="relative self-center">
+      <Globe2 aria-hidden="true" className="pointer-events-none absolute top-1/2 left-2 size-4 -translate-y-1/2 text-[#272746]" />
       <select
         aria-label={t("label")}
         aria-busy={isPending}
-        className="border p-1 px-2 rounded-md"
+        className="h-[30px] rounded-lg border border-border bg-white py-1 pr-1 pl-7 text-sm"
         value={locale}
         disabled={isPending}
         onChange={(event) => {

@@ -80,3 +80,7 @@ Uygulama [http://localhost:4001](http://localhost:4001) adresinde çalışır. D
 - Bağımlılık değişikliklerinden sonra `pnpm-lock.yaml` dosyasını güncel tutun.
 - Yeni ortak bileşenleri `components` altında, route’a özel dosyaları ilgili `app` segmentinde konumlandırın.
 - Lint kontrolünü ve production build’ini commit öncesinde çalıştırın.
+
+## Authentik ile giriş
+
+Kurulum, veritabanı geçişi, güvenli sağlayıcı kaydı ve Docker dağıtımı için [kimlik doğrulama rehberine](docs/authentik.md) bakın.

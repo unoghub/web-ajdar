@@ -5,7 +5,7 @@ const tr = {
     community: "Topluluk",
     events: "Etkinlikler",
     projects: "Projeler",
-    blog: "Blog",
+    blog: "Bülten",
     contact: "İletişim",
   },
   LocaleSwitcher: {
