@@ -1,0 +1,27 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1791824183821,
+      "tag": "0000_authentik_sso",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1791826474060,
+      "tag": "0001_web_admin_groups",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1791826930295,
+      "tag": "0002_sso_provider_deprecate",
+      "breakpoints": true
+    }
+  ]
+}

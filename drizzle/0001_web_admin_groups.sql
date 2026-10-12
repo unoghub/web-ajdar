@@ -1,0 +1,1 @@
+ALTER TABLE "user" ADD COLUMN "webAdminGroups" jsonb DEFAULT '[]'::jsonb NOT NULL;

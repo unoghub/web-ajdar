@@ -56,7 +56,7 @@ export function Navbar() {
                         Press Kit
                     </Link>
                     <LocaleSwitcher />
-                    <Button className="h-[30px] min-w-[106px] cursor-pointer rounded-full bg-[#74C74E] px-3 text-base hover:bg-[#74C74E]/80">
+                    <Button render={<Link href="/login" />} className="h-[30px] min-w-[106px] cursor-pointer rounded-full bg-[#74C74E] px-3 text-base hover:bg-[#74C74E]/80">
                         Giriş Yap
                     </Button>
                 </div>
