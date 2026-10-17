@@ -28,7 +28,7 @@ Set `AUTHENTIK_ISSUER` to the exact `issuer` value from the application's discov
 
 ## Database and provider configuration
 
-The repository previously had no database or ORM. `db/schema.ts` defines the Better Auth and SSO tables. `drizzle/0000_authentik_sso.sql` creates `user`, `session`, `account`, `verification`, and `ssoProvider`; `drizzle/0001_web_admin_groups.sql` adds the optional Authentik group claim to existing users with an empty-array default. Review table names and permissions against any existing database before applying. Neither migration drops or recreates unrelated data.
+`db/schema.ts` defines the Better Auth and SSO tables. `drizzle/0000_authentik_sso.sql` creates `user`, `session`, `account`, `verification`, and `ssoProvider`; `drizzle/0001_web_admin_groups.sql` adds the Authentik group claim. Migration `0002` removed `ssoProvider` by mistake; `0003_restore_sso_provider.sql` restores it. Apply all pending migrations in order. Migration `0003` recreates the table empty, so any provider rows removed by `0002` need separate recovery from a backup if they were used.
 
 Generate and check migrations locally:
 
@@ -43,9 +43,9 @@ Apply the reviewed migration manually in development and production using the ap
 pnpm db:migrate
 ```
 
-Do not run migrations automatically during image build or application startup. For future Better Auth upgrades, update `db/schema.ts`, generate a new Drizzle migration, and review it before deployment.
+The Docker container runs `drizzle-kit migrate` before starting the server. For future Better Auth upgrades, update `db/schema.ts`, generate a new Drizzle migration, and review it before deployment.
 
-The single Authentik provider is configured with Better Auth's `defaultSSO` option in `lib/auth.ts`, using server-only environment values. No bootstrap account, registration script, or row in `ssoProvider` is needed. The App Router handler blocks provider mutation and email/password endpoints. Update the environment values and restart the app to rotate OIDC credentials. If a provider row with the same ID was previously registered, the configured `defaultSSO` provider takes precedence; review and remove obsolete rows through a controlled database maintenance process.
+The single Authentik provider is configured with Better Auth's `defaultSSO` option in `lib/auth.ts`, using server-only environment values. No bootstrap account, registration script, or row in `ssoProvider` is needed, but the SSO plugin still requires the table in the Drizzle schema and PostgreSQL. The App Router handler blocks provider mutation and email/password endpoints. Update the environment values and restart the app to rotate OIDC credentials. If a provider row with the same ID was previously registered, the configured `defaultSSO` provider takes precedence; review and remove obsolete rows through a controlled database maintenance process.
 
 ## Local and Docker operation
 

@@ -70,3 +70,14 @@ export const verification = pgTable(
   },
   (table) => [index("verification_identifier_idx").on(table.identifier)],
 );
+
+export const ssoProvider = pgTable("ssoProvider", {
+  id: text("id").primaryKey(),
+  issuer: text("issuer").notNull(),
+  oidcConfig: text("oidcConfig"),
+  samlConfig: text("samlConfig"),
+  userId: text("userId").references(() => user.id),
+  providerId: text("providerId").notNull().unique(),
+  organizationId: text("organizationId"),
+  domain: text("domain").notNull(),
+});
