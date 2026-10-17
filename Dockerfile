@@ -1,3 +1,5 @@
+# syntax=docker/dockerfile:1
+
 # ============================================
 # Stage 1: Dependencies Installation Stage
 # ============================================
@@ -58,7 +60,8 @@ ENV NEXT_TELEMETRY_DISABLED=1
 # This caches the .next/cache directory across builds, but it also prevents
 # .next/cache/fetch-cache from being included in the final image, meaning
 # cached fetch responses from the build won't be available at runtime.
-RUN if [ -f package-lock.json ]; then \
+RUN --mount=type=secret,id=AUTHENTIK_ISSUER,env=AUTHENTIK_ISSUER,required=true \
+  if [ -f package-lock.json ]; then \
     npm run build; \
   elif [ -f yarn.lock ]; then \
     corepack enable yarn && yarn build; \

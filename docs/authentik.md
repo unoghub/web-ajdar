@@ -16,7 +16,7 @@ Copy `.env.example` to `.env.local` for development. Fill in real values locally
 | `AUTHENTIK_EMAIL_DOMAIN` | Bare domain used for provider lookup. Set it to the permitted users' email domain. Authentik policy must enforce who may sign in. |
 | `AUTHENTIK_PROVIDER_ID`, `NEXT_PUBLIC_AUTHENTIK_PROVIDER_ID` | Matching provider ID; both default to `authentik`. The public ID is not a credential. |
 
-The server validates configuration when auth is first used, so Docker builds do not need production secrets. The auth route accepts only the configured public origin and Authentik origin as trusted origins. If Authentik discovery advertises endpoints on another origin, review and explicitly add that origin in `lib/auth.ts`. Do not trust arbitrary origins.
+The Docker build needs `AUTHENTIK_ISSUER` while Next.js collects route configuration. For a Dokploy Dockerfile build, set it under Build-time Secrets with the exact key `AUTHENTIK_ISSUER`; the Dockerfile mounts it as an environment variable for the build command. Set the same value in the application's runtime environment. The auth route accepts only the configured public origin and Authentik origin as trusted origins. If Authentik discovery advertises endpoints on another origin, review and explicitly add that origin in `lib/auth.ts`. Do not trust arbitrary origins.
 
 ## Authentik application
 
@@ -51,7 +51,7 @@ The single Authentik provider is configured with Better Auth's `defaultSSO` opti
 
 Run `pnpm install`, apply the migration, configure the environment, and start `pnpm dev`. The Authentik application needs a local redirect URI such as `http://localhost:3000/api/auth/sso/callback/authentik` for development. If Authentik does not permit plain HTTP redirect URIs, use a local HTTPS origin and set `BETTER_AUTH_URL` accordingly.
 
-Build the existing standalone Docker image with `docker build -t unog-web .`. Supply secrets at **runtime**, for example `docker run --env-file ./production.env -p 4001:4001 unog-web`; never copy a production env file into the image. The container listens on port 4001. Terminate HTTPS at the reverse proxy and forward the original Host and protocol headers. Route the public `BETTER_AUTH_URL` to this container, including `/api/auth/*`. Authentik and the app must both be publicly reachable over HTTPS. Keep PostgreSQL private; a private hostname works only if the app container's DNS and routing can reach it. Allow the app server outbound access to Authentik's OIDC endpoints.
+Build the standalone Docker image with `docker build --secret id=AUTHENTIK_ISSUER,env=AUTHENTIK_ISSUER -t unog-web .`, with `AUTHENTIK_ISSUER` set in the build shell. Supply secrets at **runtime**, for example `docker run --env-file ./production.env -p 4001:4001 unog-web`; never copy a production env file into the image. The container listens on port 4001. Terminate HTTPS at the reverse proxy and forward the original Host and protocol headers. Route the public `BETTER_AUTH_URL` to this container, including `/api/auth/*`. Authentik and the app must both be publicly reachable over HTTPS. Keep PostgreSQL private; a private hostname works only if the app container's DNS and routing can reach it. Allow the app server outbound access to Authentik's OIDC endpoints.
 
 ## Verification and troubleshooting
 
