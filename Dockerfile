@@ -99,6 +99,15 @@ RUN chown node:node .next
 COPY --from=builder --chown=node:node /app/.next/standalone ./
 COPY --from=builder --chown=node:node /app/.next/static ./.next/static
 
+# Include Drizzle's migration runner and SQL files so migrations can run from
+# inside Dokploy's private network when the container starts.
+COPY --from=dependencies --chown=node:node /app/node_modules ./node_modules
+COPY --from=builder --chown=node:node /app/drizzle.config.ts ./drizzle.config.ts
+COPY --from=builder --chown=node:node /app/drizzle ./drizzle
+COPY --from=builder --chown=node:node /app/db ./db
+COPY --from=builder --chown=node:node /app/lib ./lib
+COPY --from=builder --chown=node:node /app/tsconfig.json ./tsconfig.json
+
 # If you want to persist the fetch cache generated during the build so that
 # cached responses are available immediately on startup, uncomment this line:
 # COPY --from=builder --chown=node:node /app/.next/cache ./.next/cache
@@ -110,4 +119,4 @@ USER node
 EXPOSE 4001
 
 # Start Next.js standalone server
-CMD ["node", "server.js"]
+CMD ["sh", "-c", "./node_modules/.bin/drizzle-kit migrate && exec node server.js"]
