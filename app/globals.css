@@ -149,3 +149,11 @@
   --typeset-leading: 1.75;
   --typeset-flow: 1.25em;
 }
+
+.shared-editor .tiptap p.is-editor-empty:first-child::before {
+  color: var(--color-muted-foreground);
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  pointer-events: none;
+}
