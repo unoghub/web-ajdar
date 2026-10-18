@@ -1,7 +1,5 @@
-import { client } from "@/lib/orpc";
+import { NewsListSection } from "./_components/NewsListSection";
 
-export default async function BultenPage() {
-    const healthCheck = await client.healthCheck()
-
-    return healthCheck;
+export default function BultenPage() {
+    return <NewsListSection />;
 }
