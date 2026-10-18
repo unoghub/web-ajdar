@@ -3,10 +3,10 @@ import { Inter, Caveat, Dosis } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { Navbar } from "@/components/navbar";
-import { NextIntlClientProvider } from 'next-intl';
+import { NextIntlClientProvider } from "next-intl";
 import { getLocale } from "next-intl/server";
 
-const inter = Inter({ subsets: ['latin'], variable: '--font-sans' });
+const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
 const caveat = Caveat({
   variable: "--font-caveat",
@@ -29,7 +29,14 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang={locale}
-      className={cn("h-full", "antialiased", caveat.variable, dosis.variable, "font-dosis", inter.variable)}
+      className={cn(
+        "h-full",
+        "antialiased",
+        caveat.variable,
+        dosis.variable,
+        "font-dosis",
+        inter.variable,
+      )}
     >
       <body className="min-h-full flex flex-col">
         <NextIntlClientProvider>

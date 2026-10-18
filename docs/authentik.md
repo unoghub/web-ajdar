@@ -6,15 +6,15 @@ This app uses Better Auth 1.7.7 with `@better-auth/sso` 1.7.7, the Better Auth D
 
 Copy `.env.example` to `.env.local` for development. Fill in real values locally or through a runtime secret manager. Do not commit them. Generate `BETTER_AUTH_SECRET` with `openssl rand -base64 32` (or another cryptographically secure generator). It must be at least 32 characters.
 
-| Variable | Purpose |
-| --- | --- |
-| `BETTER_AUTH_URL` | Public application origin, for example `https://app.example.com`, without a path. Never use an internal Docker hostname. |
-| `BETTER_AUTH_SECRET` | Session signing secret. Keep server only. |
-| `DATABASE_URL` | PostgreSQL connection string reachable from the application container. Keep server only. |
-| `AUTHENTIK_ISSUER` | Exact `issuer` reported by Authentik discovery, including trailing slash when present. |
-| `AUTHENTIK_CLIENT_ID`, `AUTHENTIK_CLIENT_SECRET` | Authentik confidential client credentials. Keep the secret server only. |
-| `AUTHENTIK_EMAIL_DOMAIN` | Bare domain used for provider lookup. Set it to the permitted users' email domain. Authentik policy must enforce who may sign in. |
-| `AUTHENTIK_PROVIDER_ID`, `NEXT_PUBLIC_AUTHENTIK_PROVIDER_ID` | Matching provider ID; both default to `authentik`. The public ID is not a credential. |
+| Variable                                                     | Purpose                                                                                                                           |
+| ------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------- |
+| `BETTER_AUTH_URL`                                            | Public application origin, for example `https://app.example.com`, without a path. Never use an internal Docker hostname.          |
+| `BETTER_AUTH_SECRET`                                         | Session signing secret. Keep server only.                                                                                         |
+| `DATABASE_URL`                                               | PostgreSQL connection string reachable from the application container. Keep server only.                                          |
+| `AUTHENTIK_ISSUER`                                           | Exact `issuer` reported by Authentik discovery, including trailing slash when present.                                            |
+| `AUTHENTIK_CLIENT_ID`, `AUTHENTIK_CLIENT_SECRET`             | Authentik confidential client credentials. Keep the secret server only.                                                           |
+| `AUTHENTIK_EMAIL_DOMAIN`                                     | Bare domain used for provider lookup. Set it to the permitted users' email domain. Authentik policy must enforce who may sign in. |
+| `AUTHENTIK_PROVIDER_ID`, `NEXT_PUBLIC_AUTHENTIK_PROVIDER_ID` | Matching provider ID; both default to `authentik`. The public ID is not a credential.                                             |
 
 The Docker build needs `AUTHENTIK_ISSUER` while Next.js collects route configuration. For a Dokploy Dockerfile build, set it under Build-time Secrets with the exact key `AUTHENTIK_ISSUER`; the Dockerfile mounts it as an environment variable for the build command. Set the same value in the application's runtime environment. The auth route accepts only the configured public origin and Authentik origin as trusted origins. If Authentik discovery advertises endpoints on another origin, review and explicitly add that origin in `lib/auth.ts`. Do not trust arbitrary origins.
 

@@ -1,5 +1,5 @@
 import { toNextJsHandler } from "better-auth/next-js";
-import { auth } from "@/lib/auth"
+import { auth } from "@/lib/auth";
 
 // The configured provider is server-owned; its mutation endpoints are unavailable.
 const blocked = new Set([

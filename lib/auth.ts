@@ -24,15 +24,12 @@ export const auth = betterAuth({
       },
     },
   },
-  trustedOrigins: [
-    process.env.BETTER_AUTH_URL!, 
-    new URL(process.env.AUTHENTIK_ISSUER!).origin
-  ],
+  trustedOrigins: [process.env.BETTER_AUTH_URL!, new URL(process.env.AUTHENTIK_ISSUER!).origin],
   plugins: [
     sso({
       provisionUserOnEveryLogin: true,
       provisionUser: async ({ user, userInfo }) => {
-        const groups = userInfo.webAdminGroups as WebAdminGroup[]
+        const groups = userInfo.webAdminGroups as WebAdminGroup[];
 
         await db
           .update(schema.user)

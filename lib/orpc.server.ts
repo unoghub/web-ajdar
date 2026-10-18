@@ -1,6 +1,6 @@
-import { router } from '@/orpc';
-import { createRouterClient } from '@orpc/server'
-import { headers } from 'next/headers'
+import { router } from "@/orpc";
+import { createRouterClient } from "@orpc/server";
+import { headers } from "next/headers";
 
 globalThis.$client = createRouterClient(router, {
   /**
@@ -13,4 +13,4 @@ globalThis.$client = createRouterClient(router, {
   context: async () => ({
     headers: await headers(), // provide headers if initial context required
   }),
-})
+});

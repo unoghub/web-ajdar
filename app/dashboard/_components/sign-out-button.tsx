@@ -9,11 +9,7 @@ export function SignOutButton() {
   }
 
   return (
-    <button
-      type="button"
-      className="mt-6 rounded-lg border px-4 py-2"
-      onClick={signOut}
-    >
+    <button type="button" className="mt-6 rounded-lg border px-4 py-2" onClick={signOut}>
       Sign out
     </button>
   );
