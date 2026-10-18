@@ -12,11 +12,9 @@ export default async function Dashboard() {
   }
 
   return (
-    <main className="mx-auto w-full max-w-4xl flex-1 px-6 py-16">
-      <h1 className="text-3xl font-bold">Dashboard</h1>
-      <p className="mt-4">Signed in as {session.user.name || session.user.email}</p>
+    <div className="flex-1 px-6">
       <pre>{JSON.stringify(session, null, 2)}</pre>
       <SignOutButton />
-    </main>
+    </div>
   );
 }
