@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Inter, Caveat, Dosis } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
-import { Navbar } from "@/components/navbar";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale } from "next-intl/server";
 
@@ -40,7 +39,6 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="min-h-full flex flex-col">
         <NextIntlClientProvider>
-          <Navbar />
           {children}
         </NextIntlClientProvider>
       </body>
