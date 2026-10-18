@@ -44,13 +44,13 @@ Ardından [http://localhost:3000](http://localhost:3000) adresini tarayıcıda a
 
 ## Kullanılabilir komutlar
 
-| Komut | Açıklama |
-| --- | --- |
-| `pnpm dev` | Geliştirme sunucusunu başlatır. |
-| `pnpm lint` | Oxlint ile kod kontrolü yapar. |
+| Komut           | Açıklama                                           |
+| --------------- | -------------------------------------------------- |
+| `pnpm dev`      | Geliştirme sunucusunu başlatır.                    |
+| `pnpm lint`     | Oxlint ile kod kontrolü yapar.                     |
 | `pnpm lint:fix` | Otomatik düzeltilebilen lint sorunlarını düzeltir. |
-| `pnpm build` | Production build oluşturur. |
-| `pnpm start` | Oluşturulan production build’i çalıştırır. |
+| `pnpm build`    | Production build oluşturur.                        |
+| `pnpm start`    | Oluşturulan production build’i çalıştırır.         |
 
 Production build’i yerel olarak kontrol etmek için:
 

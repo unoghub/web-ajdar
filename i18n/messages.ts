@@ -15,7 +15,8 @@ const tr = {
   Hero: {
     community: "ÜNOG Oyun Geliştirici Topluluğuna",
     welcome: "HOŞ GELDİNİZ!",
-    description: "Sohbet et, ekip kur, etkinliklere katıl ve birlikte oyun geliştir. İster yeni başlıyor ol ister deneyimli ol, <strong>ÜNOG</strong>'da seni destekleyen bir topluluk bulacaksın.",
+    description:
+      "Sohbet et, ekip kur, etkinliklere katıl ve birlikte oyun geliştir. İster yeni başlıyor ol ister deneyimli ol, <strong>ÜNOG</strong>'da seni destekleyen bir topluluk bulacaksın.",
     joinDiscord: "Discord'a Katıl",
     mascotAlt: "ÜNOG penguen maskotu",
   },
@@ -27,15 +28,18 @@ const tr = {
     heading: "ÜNOG <accent>Kimdir?</accent>",
     identity: {
       title: "Biz Kimiz?",
-      description: "2017 yılında kurulan ve Türkiye'nin dört bir yanından mühendisleri, tasarımcıları ve oyunseverleri bir araya getiren, bağımsız ve kâr amacı gütmeyen bir oyun geliştirici topluluğuyuz.",
+      description:
+        "2017 yılında kurulan ve Türkiye'nin dört bir yanından mühendisleri, tasarımcıları ve oyunseverleri bir araya getiren, bağımsız ve kâr amacı gütmeyen bir oyun geliştirici topluluğuyuz.",
     },
     mission: {
       title: "Misyon",
-      description: "Game Jam'ler, atölyeler, buluşmalar ve yayınlarla yaratıcı iş birliklerini artırmak. Bilgiyi erişilebilir kılarak sektördeki dönüşüme katkıda bulunmak.",
+      description:
+        "Game Jam'ler, atölyeler, buluşmalar ve yayınlarla yaratıcı iş birliklerini artırmak. Bilgiyi erişilebilir kılarak sektördeki dönüşüme katkıda bulunmak.",
     },
     vision: {
       title: "Vizyon",
-      description: "Türkiye'de oyun geliştirme kültürünü güçlendirmek, bilgi paylaşımını yaygınlaştırmak ve bağımsız oyun geliştiriciler için sürdürülebilir bir ekosistem inşa etmek.",
+      description:
+        "Türkiye'de oyun geliştirme kültürünü güçlendirmek, bilgi paylaşımını yaygınlaştırmak ve bağımsız oyun geliştiriciler için sürdürülebilir bir ekosistem inşa etmek.",
     },
   },
 } as const;
@@ -60,7 +64,8 @@ const en = {
   Hero: {
     community: "WELCOME To the",
     welcome: "ÜNOG Game Developer Community!",
-    description: "Chat, build a team, join events and develop games together. Whether you're just starting out or already experienced, you'll find a supportive community at <strong>ÜNOG</strong>.",
+    description:
+      "Chat, build a team, join events and develop games together. Whether you're just starting out or already experienced, you'll find a supportive community at <strong>ÜNOG</strong>.",
     joinDiscord: "Join Discord",
     mascotAlt: "ÜNOG penguin mascot",
   },
@@ -72,15 +77,18 @@ const en = {
     heading: "<accent>Who is</accent> ÜNOG?",
     identity: {
       title: "Who Are We?",
-      description: "Founded in 2017, we are an independent, nonprofit game developer community bringing together engineers, designers and gamers from across Türkiye.",
+      description:
+        "Founded in 2017, we are an independent, nonprofit game developer community bringing together engineers, designers and gamers from across Türkiye.",
     },
     mission: {
       title: "Mission",
-      description: "Encourage creative collaboration through game jams, workshops, meetups and broadcasts. Contribute to the industry's transformation by making knowledge accessible.",
+      description:
+        "Encourage creative collaboration through game jams, workshops, meetups and broadcasts. Contribute to the industry's transformation by making knowledge accessible.",
     },
     vision: {
       title: "Vision",
-      description: "Strengthen game development culture in Türkiye, expand knowledge sharing and build a sustainable ecosystem for independent game developers.",
+      description:
+        "Strengthen game development culture in Türkiye, expand knowledge sharing and build a sustainable ecosystem for independent game developers.",
     },
   },
 } as const satisfies TranslationShape<typeof tr>;
