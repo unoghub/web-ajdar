@@ -16,8 +16,8 @@ export function EmptyNewsSection() {
           <FaceSlightlyFrowning className="size-12" />
         </EmptyMedia>
         <EmptyContent>
-          <EmptyTitle>Can't find news</EmptyTitle>
-          <EmptyDescription>We dont have any news for you just yet</EmptyDescription>
+          <EmptyTitle>Henüz bülten yok</EmptyTitle>
+          <EmptyDescription>Yayınlanan bültenler burada görünecek.</EmptyDescription>
         </EmptyContent>
       </EmptyHeader>
     </Empty>
