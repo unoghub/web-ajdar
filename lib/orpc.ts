@@ -1,15 +1,7 @@
 import type { RouterClient } from "@orpc/server";
 import { createORPCClient } from "@orpc/client";
 import { RPCLink } from "@orpc/client/fetch";
-import { router } from "@/orpc";
-
-if (import.meta.env.SSR) {
-  await import("./orpc.server");
-}
-
-declare global {
-  var $client: RouterClient<typeof router> | undefined;
-}
+import type { router } from "@/orpc";
 
 const link = new RPCLink({
   url: "/rpc",
@@ -22,7 +14,4 @@ const link = new RPCLink({
   },
 });
 
-/**
- * Fall back to a browser client when no SSR client is registered.
- */
-export const client: RouterClient<typeof router> = globalThis.$client ?? createORPCClient(link);
+export const client: RouterClient<typeof router> = createORPCClient(link);

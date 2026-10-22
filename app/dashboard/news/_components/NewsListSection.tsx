@@ -1,4 +1,4 @@
-import { client } from "@/lib/orpc";
+import { client } from "@/lib/orpc.server";
 import {
   Table,
   TableBody,
@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/table";
 import { PageTemplate } from "../../_components/PageTemplate";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 const statusLabels = {
   draft: "Taslak",
@@ -29,7 +30,11 @@ export async function NewsListSection() {
     <PageTemplate
       title="Bülten"
       description="Tüm bültenlerin listesi"
-      action={<Button>Yeni bülten</Button>}
+      action={
+        <Link href="/dashboard/news/create">
+          <Button>Yeni bülten</Button>
+        </Link>
+      }
     >
       <div className="overflow-hidden rounded-xl border">
         <Table>
@@ -52,7 +57,12 @@ export async function NewsListSection() {
               news.map((item) => (
                 <TableRow key={item.id}>
                   <TableCell className="min-w-64 max-w-xl">
-                    <div className="font-medium">{item.title}</div>
+                    <Link
+                      href={`/dashboard/news/${encodeURIComponent(item.slug)}/edit`}
+                      className="font-medium hover:underline"
+                    >
+                      {item.title}
+                    </Link>
                     {item.summary && (
                       <div className="mt-1 line-clamp-2 text-sm text-muted-foreground">
                         {item.summary}
