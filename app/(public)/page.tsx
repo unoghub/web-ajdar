@@ -1,5 +1,7 @@
 import { AboutSection } from "@/components/about";
 import { HeroSection } from "@/components/hero";
+import { SupportUs } from "@/components/support-us";
+import { UpcomingEvents } from "@/components/upcoming-events";
 
 export default function Home() {
   return (
@@ -8,6 +10,8 @@ export default function Home() {
         <HeroSection />
       </div>
       <AboutSection />
+      <UpcomingEvents />
+      <SupportUs />
     </div>
   );
 }
